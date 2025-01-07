@@ -2,6 +2,7 @@ import TodoItem from "./TodoItem";
 
 const List = ({ todos }) => {
   console.log(todos);
+
   return (
     <div className="flex flex-col gap-8">
       <h1 className="text-2xl font-semibold">Todo List</h1>
