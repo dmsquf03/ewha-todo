@@ -2,6 +2,7 @@ import TodoItem from "./TodoItem";
 import PropTypes from "prop-types";
 import { useDebugValue, useState } from "react";
 
+<<<<<<< HEAD
 const List = ({ todos, onUpdate }) => {
   const [search, setSearch] = useState("");
   const onChangeSearch = (e) => {
@@ -16,6 +17,11 @@ const List = ({ todos, onUpdate }) => {
   };
 
   const filteredTodos = getFilteredList();
+=======
+const List = ({ todos }) => {
+  console.log(todos);
+
+>>>>>>> a90178a7815848d2277564306d27d9f29f82fb43
   return (
     <div className="flex flex-col gap-8">
       <h1 className="text-2xl font-semibold">Todo List</h1>
