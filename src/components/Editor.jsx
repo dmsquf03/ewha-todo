@@ -1,4 +1,6 @@
 import { useState, useRef } from "react";
+import PropTypes from "prop-types";
+
 const Editor = ({ onCreate }) => {
   const [content, setContent] = useState("");
   const contentRef = useRef();
@@ -39,4 +41,8 @@ const Editor = ({ onCreate }) => {
     </div>
   );
 };
+Editor.propTypes = {
+  onCreate: PropTypes.func.isRequired,
+};
+
 export default Editor;
