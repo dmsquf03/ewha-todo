@@ -1,8 +1,18 @@
-const TodoItem = ({ todo }) => {
+import PropTypes from "prop-types";
+
+const TodoItem = ({ todo, onUpdate }) => {
+  const onChangeCheckbox = () => {
+    onUpdate(todo.id);
+  };
   return (
     <div className="flex items-center justify-between gap-4 h-8 text-sm">
       <div className="flex items-center gap-2">
-        <input type="checkbox" readOnly checked={todo.isDone} />
+        <input
+          onChange={onChangeCheckbox}
+          checked={todo.isDone}
+          className="w-5 h-5"
+          type="checkbox"
+        />
         <div className="text-lg">{todo.content}</div>
       </div>
       <div className="text-gray-600">{todo.date}</div>
@@ -12,4 +22,9 @@ const TodoItem = ({ todo }) => {
     </div>
   );
 };
+TodoItem.propTypes = {
+  todo: PropTypes.array.isRequired,
+  onUpdate: PropTypes.func.isRequired,
+};
+
 export default TodoItem;
