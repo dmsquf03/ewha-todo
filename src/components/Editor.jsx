@@ -13,6 +13,7 @@ const Editor = ({ onCreate }) => {
   const onSubmit = () => {
     if (content === "") {
       contentRef.current.focus();
+      return;
     }
     onCreate(content);
   };
@@ -22,6 +23,7 @@ const Editor = ({ onCreate }) => {
       onSubmit();
     }
   };
+
   return (
     <div className="flex justify-between h-24 pb-16 border-b text-sm">
       <input

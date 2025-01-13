@@ -1,9 +1,14 @@
 import PropTypes from "prop-types";
 
-const TodoItem = ({ todo, onUpdate }) => {
+const TodoItem = ({ todo, onUpdate, onDelete }) => {
   const onChangeCheckbox = () => {
     onUpdate(todo.id);
   };
+
+  const onClickDelete = () => {
+    onDelete(todo.id);
+  };
+
   return (
     <div className="flex items-center justify-between gap-4 h-8 text-sm">
       <div className="flex items-center gap-2">
@@ -16,7 +21,10 @@ const TodoItem = ({ todo, onUpdate }) => {
         <div className="text-lg">{todo.content}</div>
       </div>
       <div className="text-gray-600">{todo.date}</div>
-      <button className="border rounded-3xl px-4 h-full bg-neutral-300 text-white text-xs">
+      <button
+        onClick={onClickDelete}
+        className="border rounded-3xl px-4 h-full bg-neutral-300 text-white text-xs"
+      >
         삭제
       </button>
     </div>
@@ -25,6 +33,7 @@ const TodoItem = ({ todo, onUpdate }) => {
 TodoItem.propTypes = {
   todo: PropTypes.array.isRequired,
   onUpdate: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default TodoItem;
