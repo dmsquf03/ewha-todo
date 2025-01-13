@@ -8,7 +8,6 @@ const TodoItem = ({ todo, onUpdate, onDelete }) => {
   const onClickDelete = () => {
     onDelete(todo.id);
   };
-
   return (
     <div className="flex items-center justify-between gap-4 h-8 text-sm">
       <div className="flex items-center gap-2">

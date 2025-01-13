@@ -40,9 +40,11 @@ function App() {
     setTodos([newData, ...todos]);
   };
 
+
   const onDelete = (targetId) => {
     setTodos(todos.filter((todo) => todo.id != targetId));
   };
+
 
   const onUpdate = (targetId) => {
     setTodos(

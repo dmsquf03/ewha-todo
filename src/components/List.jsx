@@ -35,6 +35,7 @@ const List = ({ todos, onUpdate, onDelete }) => {
             onDelete={onDelete}
           />
         );
+
       })}
     </div>
   );
