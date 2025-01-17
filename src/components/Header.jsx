@@ -1,5 +1,5 @@
 import { getDate } from "../utils/getDate";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 const Header = () => {
   const API_KEY = import.meta.env.VITE_WERATHER_API_KEY;
@@ -7,26 +7,28 @@ const Header = () => {
   const today = new Date();
   const [weather, setWeather] = useState("");
 
-  axios
-    .get(URL)
-    .then((response) => {
-      console.log(response);
-      const weatherIcon = response.data.weather[0].icon;
-      const weatherIconAdrs = `https://openweathermap.org/img/wn/${weatherIcon}@2x.png`;
-      setWeather(weatherIconAdrs);
-      console.log(weatherIcon);
-    })
-    .catch((err) => {
-      console.log("발생한 오류: ", err);
-    });
+  useEffect(() => {
+    axios
+      .get(URL)
+      .then((response) => {
+        console.log(response);
+        const weatherIcon = response.data.weather[0].icon;
+        const weatherIconAdrs = `https://openweathermap.org/img/wn/${weatherIcon}@2x.png`;
+        setWeather(weatherIconAdrs);
+        console.log(weatherIcon);
+      })
+      .catch((err) => {
+        console.log("발생한 오류: ", err);
+      });
+  }, [URL, weather]);
 
   return (
     <div className="flex justify-between mt-14">
       <div className="flex flex-col text-2xl font-semibold">
         <h1>{getDate(today)}</h1>
-        <div className="flex">
+        <div className="flex items-center">
           <h1>오늘의 날씨</h1>
-          <img alt="Weather Icon" src={weather} className="2-14 h-14" />
+          <img alt="Weather Icon" src={weather} className="w-14 h-14" />
         </div>
       </div>
       <div className="w-16">
