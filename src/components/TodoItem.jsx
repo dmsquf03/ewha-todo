@@ -1,6 +1,9 @@
 import PropTypes from "prop-types";
+import { useContext } from "react";
+import { TodoContext } from "../App";
 
-const TodoItem = ({ todo, onUpdate, onDelete }) => {
+const TodoItem = ({ todo }) => {
+  const { onUpdate, onDelete } = useContext(TodoContext);
   const onChangeCheckbox = () => {
     onUpdate(todo.id);
   };
@@ -31,8 +34,6 @@ const TodoItem = ({ todo, onUpdate, onDelete }) => {
 };
 TodoItem.propTypes = {
   todo: PropTypes.array.isRequired,
-  onUpdate: PropTypes.func.isRequired,
-  onDelete: PropTypes.func.isRequired,
 };
 
 export default TodoItem;

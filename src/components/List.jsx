@@ -1,8 +1,9 @@
 import TodoItem from "./TodoItem";
-import PropTypes from "prop-types";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { TodoContext } from "../App";
 
-const List = ({ todos, onUpdate, onDelete }) => {
+const List = () => {
+  const { todos } = useContext(TodoContext);
   const [search, setSearch] = useState("");
 
   const onChangeSearch = (e) => {
@@ -27,22 +28,10 @@ const List = ({ todos, onUpdate, onDelete }) => {
         onChange={onChangeSearch}
       />
       {filteredTodos.map((todo) => {
-        return (
-          <TodoItem
-            key={todo.id}
-            todo={todo}
-            onUpdate={onUpdate}
-            onDelete={onDelete}
-          />
-        );
-
+        return <TodoItem key={todo.id} todo={todo} />;
       })}
     </div>
   );
 };
-List.propTypes = {
-  todos: PropTypes.array.isRequired,
-  onUpdate: PropTypes.func.isRequired,
-  onDelete: PropTypes.func.isRequired,
-};
+
 export default List;
